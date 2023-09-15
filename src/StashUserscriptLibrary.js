@@ -901,7 +901,20 @@
 
                 const metadataNode = searchResultItem.querySelector('.scene-metadata');
                 const titleNode = metadataNode.querySelector('h4 .optional-field .optional-field-content');
-                const dateNode = metadataNode.querySelector('h5 .optional-field .optional-field-content');
+
+                const dateCodeNodes = metadataNode.querySelectorAll('h5 .optional-field .optional-field-content');
+                let codeNode = null;
+                let dateNode = null;
+
+                for (const dateCodeNode of dateCodeNodes) {
+                    if (remoteData?.code === dateCodeNode.innerText) {
+                        codeNode = dateCodeNode;
+                    }
+                    else if (remoteData?.date === dateCodeNode.innerText) {
+                        dateNode = dateCodeNode;
+                    }
+                }
+
 
                 const entityNodes = searchResultItem.querySelectorAll('.entity-name');
                 let studioNode = null;
